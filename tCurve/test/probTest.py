@@ -1,5 +1,5 @@
 from unittest import TestCase
-from tCurve.prob import prob as prob
+from tCurve.prob import prob as prob, _integrate, _f
 import json
 
 
@@ -205,3 +205,113 @@ class ProbTest(TestCase):
         result = prob(self.inputDictionary)
         self.assertIn(self.errorKey, result)
         self.assertIn(self.errorValue, result[self.errorKey])
+        
+    #Integrate Tests
+    #    Integrate takes in 3 parameters: t, n, and _f
+    #    t is an number greater than or equal to zero
+    #    n is an integer that must be greater than zero
+    #    _f is a function that should exist.
+    #Happy Path
+    def test100_110IntegrateCorrectOutput(self):
+        n = 1
+        t = 0.3249
+        actualResult = _integrate(t, n, _f)
+        self.assertAlmostEqual(actualResult, 0.3141414498, 4)
+    
+    def test100_120IntegrateCorrectOutput(self):
+        n = 2
+        t = 0.6172
+        actualResult = _integrate(t, n, _f)
+        self.assertAlmostEqual(actualResult, 0.5656751087, 4)
+    
+    def test100_130IntegrateCorrectOutput(self):
+        n = 3
+        t = 0.5844
+        actualResult = _integrate(t, n, _f)
+        self.assertAlmostEqual(actualResult, 0.5441480893, 4)
+    
+    def test100_140IntegrateCorrectOutput(self):
+        n = 5
+        t = 1.4759
+        actualResult = _integrate(t, n, _f)
+        self.assertAlmostEqual(actualResult, 1.233791314, 4)
+    
+    def test100_150IntegrateCorrecOutput(self):
+        n = 7
+        t = 1.8946
+        actualResult = _integrate(t, n, _f)
+        self.assertAlmostEqual(actualResult, 1.168861209, 4)
+    
+    def test100_160IntegrateCorrecOutput(self):
+        n = 9
+        t = 3.2498
+        actualResult = _integrate(t, n, _f)
+        self.assertAlmostEqual(actualResult, 1.27565769, 4)
+    
+    def test100_170IntegrateCorrecOutput(self):
+        n = 30
+        t = 2.7500
+        actualResult = _integrate(t, n, _f)
+        self.assertAlmostEqual(actualResult, 1.251162245, 4)
+    
+    #Sad Path
+    #Since it isn't state in the project what we should return
+    #in case of a failure in integrate, I'm electing to use None
+    #because there would be a null value in the function if integration
+    #isn't done correctly. - JDG
+    def test100_210IntegrateMissingT(self):
+        n = 1
+        t = None
+        expectedResult = None
+        actualResult = _integrate(t, n, _f)
+        self.assertEqual(expectedResult, actualResult)
+    
+    def test100_220IntegrateNegativeT(self):
+        n = 1
+        t = -1
+        expectedResult = None
+        actualResult = _integrate(t, n, _f)
+        self.assertEqual(expectedResult, actualResult)
+
+    def test100_230IntegrateNonNumberT(self):
+        n = 1
+        t = "abc"
+        expectedResult = None
+        actualResult = _integrate(t, n, _f)
+        self.assertEqual(expectedResult, actualResult)
+    
+    def test100_240IntegrateMissingN(self):
+        n = None
+        t = 1.4786
+        expectedResult = None
+        actualResult = _integrate(t, n, _f)
+        self.assertEqual(expectedResult, actualResult)
+    
+    def test100_550IntegrateOutOfBoundsN(self):
+        n = 0
+        t = 0.7864
+        expectedResult = None
+        actualResult = _integrate(t, n, _f)
+        self.assertEqual(expectedResult, actualResult)
+    
+    def test100_260IntegrateNonIntegerT(self):
+        n = 2.8
+        t = 0.9873
+        expectedResult = None
+        actualResult = _integrate(t, n, _f)
+        self.assertEqual(expectedResult, actualResult)
+
+    def test100_270IntegrateNonNumberN(self):
+        n = "abc"
+        t = 0.5796
+        expectedResult = None
+        actualResult = _integrate(t, n, _f)
+        self.assertEqual(expectedResult, actualResult)
+
+    def test100_280IntegrateMissing_f(self):
+        n = 1
+        t = 0.5796
+        _b = None
+        expectedResult = None
+        actualResult = _integrate(t, n, _b)
+        self.assertEqual(expectedResult, actualResult)
