@@ -115,26 +115,26 @@ def _integrate(t, n, _f):
         t = float(n)
         if _f == None:
             return None
-    except:
-        return None
-    
-    lowerBound = 0
-    higherBound = t
-    epsilon = 0.0001
-    simpsonOld = 0.0
-    simpsonNew = epsilon
-    s = 4
-    while (abs((simpsonNew - simpsonOld)/simpsonNew) > epsilon):
-        simpsonOld = simpsonNew
-        w = (higherBound - lowerBound) / s
-        slices = _f(lowerBound, n)
-        for i in range(2, s + 1):
-            if (i % 2 == 0):
-                slices = slices + 4 * _f((lowerBound + (i-1) * w), n)
-            else:
-                slices = slices + 2 * _f((lowerBound + (i-1) * w), n)
-        slices = slices + _f(higherBound, n)
-        simpsonNew = (w/3) * slices
+        
+        lowerBound = 0
+        higherBound = t
+        epsilon = 0.0001
+        simpsonOld = 0.0
+        simpsonNew = epsilon
+        s = 4
+        while (abs((simpsonNew - simpsonOld)/simpsonNew) > epsilon):
+            simpsonOld = simpsonNew
+            w = (higherBound - lowerBound) / s
+            slices = _f(lowerBound, n)
+            for i in range(2, s + 1):
+                if (i % 2 == 0):
+                    slices = slices + 4 * _f((lowerBound + (i-1) * w), n)
+                else:
+                    slices = slices + 2 * _f((lowerBound + (i-1) * w), n)
+            slices = slices + _f(higherBound, n)
+            simpsonNew = (w/3) * slices
 
         s = s * 2
-    return simpsonNew
+        return simpsonNew
+    except:
+        return None
