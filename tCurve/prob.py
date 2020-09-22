@@ -113,7 +113,7 @@ def _integrate(t, n, _f):
     try:
         n = int(n)
         t = float(n)
-        if _f = None:
+        if _f == None:
             return None
     except:
         return None
