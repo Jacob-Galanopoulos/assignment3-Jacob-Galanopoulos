@@ -1,6 +1,5 @@
 import math
 import platform
-from builtins import None
 
 
 # Outward facing method(s)
