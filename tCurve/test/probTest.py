@@ -294,7 +294,7 @@ class ProbTest(TestCase):
         actualResult = _integrate(t, n, _f)
         self.assertEqual(expectedResult, actualResult)
     
-    def test100_960IntegrateNonIntegerT(self):
+    def test100_960IntegrateNonIntegerN(self):
         n = 2.8
         t = 0.9873
         expectedResult = None
