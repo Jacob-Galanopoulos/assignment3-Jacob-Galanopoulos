@@ -1,5 +1,6 @@
 import math
 import platform
+from builtins import None
 
 
 # Outward facing method(s)
@@ -106,4 +107,35 @@ def _f(u, n):
 
 # ----------- PLEASE COMPLETE THE FUNCTION BELOW ----------
 def _integrate(t, n, _f):
-    return ""
+    #Technically prob sanitizes these inputs before, but this function
+    #may get used elsewhere so I'm sanitizing anyways.
+    #
+    #Also _f my just not exist at some point, so I just want to be safe and test that too
+    try:
+        n = int(n)
+        t = float(n)
+        if _f = None:
+            return None
+    except:
+        return None
+    
+    lowerBound = 0
+    higherBound = t
+    epsilon = 0.0001
+    simpsonOld = 0.0
+    simpsonNew = epsilon
+    s = 4
+    while (abs((simpsonNew - simpsonOld)/simpsonNew) > epsilon):
+        simpsonOld = simpsonNew
+        w = (higherBound - lowerBound) / s
+        slices = _f(lowerBound, n)
+        for i in range(2, s + 1):
+            if (i % 2 == 0):
+                slices = slices + 4 * _f((lowerBound + (i-1) * w), n)
+            else:
+                slices = slices + 2 * _f((lowerBound + (i-1) * w), n)
+        slices = slices + _f(higherBound, n)
+        simpsonNew = (w/3) * slices
+
+        s = s * 2
+    return simpsonNew
