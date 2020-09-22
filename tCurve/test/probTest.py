@@ -1,5 +1,5 @@
 from unittest import TestCase
-from tCurve.prob import prob as prob, _integrate, _f
+from tCurve.prob import prob as prob, _f, _integrate
 import json
 
 
