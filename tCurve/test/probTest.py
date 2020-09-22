@@ -259,56 +259,56 @@ class ProbTest(TestCase):
     #in case of a failure in integrate, I'm electing to use None
     #because there would be a null value in the function if integration
     #isn't done correctly. - JDG
-    def test100_210IntegrateMissingT(self):
+    def test100_910IntegrateMissingT(self):
         n = 1
         t = None
         expectedResult = None
         actualResult = _integrate(t, n, _f)
         self.assertEqual(expectedResult, actualResult)
     
-    def test100_220IntegrateNegativeT(self):
+    def test100_920IntegrateNegativeT(self):
         n = 1
         t = -1
         expectedResult = None
         actualResult = _integrate(t, n, _f)
         self.assertEqual(expectedResult, actualResult)
 
-    def test100_230IntegrateNonNumberT(self):
+    def test100_930IntegrateNonNumberT(self):
         n = 1
         t = "abc"
         expectedResult = None
         actualResult = _integrate(t, n, _f)
         self.assertEqual(expectedResult, actualResult)
     
-    def test100_240IntegrateMissingN(self):
+    def test100_940IntegrateMissingN(self):
         n = None
         t = 1.4786
         expectedResult = None
         actualResult = _integrate(t, n, _f)
         self.assertEqual(expectedResult, actualResult)
     
-    def test100_550IntegrateOutOfBoundsN(self):
+    def test100_950IntegrateOutOfBoundsN(self):
         n = 0
         t = 0.7864
         expectedResult = None
         actualResult = _integrate(t, n, _f)
         self.assertEqual(expectedResult, actualResult)
     
-    def test100_260IntegrateNonIntegerT(self):
+    def test100_960IntegrateNonIntegerT(self):
         n = 2.8
         t = 0.9873
         expectedResult = None
         actualResult = _integrate(t, n, _f)
         self.assertEqual(expectedResult, actualResult)
 
-    def test100_270IntegrateNonNumberN(self):
+    def test100_970IntegrateNonNumberN(self):
         n = "abc"
         t = 0.5796
         expectedResult = None
         actualResult = _integrate(t, n, _f)
         self.assertEqual(expectedResult, actualResult)
 
-    def test100_280IntegrateMissing_f(self):
+    def test100_980IntegrateMissing_f(self):
         n = 1
         t = 0.5796
         _b = None
