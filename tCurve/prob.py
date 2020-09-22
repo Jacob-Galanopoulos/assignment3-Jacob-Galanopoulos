@@ -135,7 +135,7 @@ def _integrate(t, n, _f):
             slices = slices + _f(higherBound, n)
             simpsonNew = (w/3) * slices
 
-        s = s * 2
+            s = s * 2
         return simpsonNew
     except:
         return None
