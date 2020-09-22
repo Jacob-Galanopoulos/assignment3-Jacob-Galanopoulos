@@ -115,6 +115,7 @@ def _integrate(t, n, _f):
         if(nNumeric - int(nNumeric) > 0):
             return None
         n = int(n)
+        t = float(t)
         if t < 0 or n <= 0:
             return None
         if _f == None:
