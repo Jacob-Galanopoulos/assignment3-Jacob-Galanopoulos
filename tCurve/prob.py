@@ -111,13 +111,16 @@ def _integrate(t, n, _f):
     #
     #Also _f my just not exist at some point, so I just want to be safe and test that too
     try:
+        #Check n
         nNumeric = float(n)
         if(nNumeric - int(nNumeric) > 0):
             return None
         n = int(n)
+        #check t
         t = float(t)
-        if t < 0 or n <= 0:
+        if t < 0.0:
             return None
+        #check _f
         if _f == None:
             return None
     except:
