@@ -234,7 +234,7 @@ class ProbTest(TestCase):
         n = 5
         t = 1.4759
         actualResult = _integrate(t, n, _f)
-        self.assertAlmostEqual(actualResult, 1.233791314, 4)
+        self.assertAlmostEqual(actualResult, 1.0537276, 4)
     
     def test100_150IntegrateCorrecOutput(self):
         n = 7
