@@ -326,3 +326,8 @@ class ProbTest(TestCase):
         expectedResult = None
         actualResult = _integrate(n, _f)
         self.assertEqual(expectedResult, actualResult)
+    def test100_1100IntegrateMissingParamN(self):
+        t = 0.5796
+        expectedResult = None
+        actualResult = _integrate(t, _f)
+        self.assertEqual(expectedResult, actualResult)
