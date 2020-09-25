@@ -105,9 +105,9 @@ def _f(u, n):
 
 
 # ----------- PLEASE COMPLETE THE FUNCTION BELOW ----------
-#I'm adding defaults to the params to prevent the missing argument error. 
-#Not sure if this will work but let's find out.
-#Edit-yup that did it
+#I'm added defaults to the params to fix missing argument errors.
+#I could have done a dictionary like Dr. Umphress did, but I didn't even think 
+#about missing params until I got the grade back for assignment 1-20
 def _integrate(t=None, n=None, _f=None):
     #Technically prob sanitizes these inputs before, but this function
     #may get used elsewhere so I'm sanitizing anyways.
