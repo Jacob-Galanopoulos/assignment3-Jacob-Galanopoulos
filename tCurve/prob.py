@@ -107,6 +107,7 @@ def _f(u, n):
 # ----------- PLEASE COMPLETE THE FUNCTION BELOW ----------
 #I'm adding defaults to the params to prevent the missing argument error. 
 #Not sure if this will work but let's find out.
+#Edit-yup that did it
 def _integrate(t=None, n=None, _f=None):
     #Technically prob sanitizes these inputs before, but this function
     #may get used elsewhere so I'm sanitizing anyways.
